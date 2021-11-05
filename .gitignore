@@ -16,8 +16,8 @@ int pos = 0;
 
 void setup()
 {
-  pinMode(A0, INPUT);
   pinMode(8, OUTPUT);
+  pinMode(A0, INPUT);
   pinMode(A1, INPUT);
   pinMode(A2, INPUT);
   pinMode(A3, INPUT);
