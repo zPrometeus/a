@@ -1,52 +1,60 @@
-# Prerequisites
-*.d
+// C++ code
+//
+/*
+  Keyboard
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+  Plays a pitch that changes based on a changing
+  input circuit:
+  * 3 pushbuttons from +5V to analog in 0 through
+  3
+  * 3 10K resistors from analog in 0 through 3 to
+  ground
+  * 8-ohm speaker on digital pin 8
+*/
 
-# Linker output
-*.ilk
-*.map
-*.exp
+int pos = 0;
 
-# Precompiled Headers
-*.gch
-*.pch
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(8, OUTPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT);
+  pinMode(A4, INPUT);
+  pinMode(A5, INPUT);
+  pinMode(1, INPUT);
+  pinMode(2, INPUT);
+}
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+void loop()
+{
+  // if button press on A0 is detected
+  if (digitalRead(A0) == HIGH) {
+    tone(8, 262, 100); // play tone 48 (C4 = 262 Hz)
+  }
+  // if button press on A1 is detected
+  if (digitalRead(A1) == HIGH) {
+    tone(8, 294, 100); // play tone 50 (D4 = 294 Hz)
+  }
+  // if button press on A0 is detected
+  if (digitalRead(A2) == HIGH) {
+    tone(8, 330, 100); // play tone 52 (E4 = 330 Hz)
+  }
+  if (digitalRead(A3) == HIGH) {
+    tone(8, 349, 100); // play tone 53 (F4 = 349 Hz)
+  }
+  if (digitalRead(A4) == HIGH) {
+    tone(8, 392, 100); // play tone 55 (G4 = 392 Hz)
+  }
+  if (digitalRead(A5) == HIGH) {
+    tone(8, 440, 100); // play tone 57 (A4 = 440 Hz)
+  }
+  if (digitalRead(1) == HIGH) {
+    tone(8, 494, 100); // play tone 59 (B4 = 494 Hz)
+  }
+  if (digitalRead(2) == HIGH) {
+    tone(8, 523, 100); // play tone 60 (C5 = 523 Hz)
+  }
+  delay(10); // Delay a little bit to improve simulation performance
+}
